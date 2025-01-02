@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200&display=swap');
+
+main {
+    font-family: 'Rubik Vinyl', monospace;
+    max-width: 38rem;
+    padding: 2rem;
+ /*   margin: auto; */
+}
+
+body {
+    background-color: #121121;
+    color: #aaaaaa;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+
+a, a:active, a:visited {
+    color: blue;
+}
+
+.center {
+    margin: auto;
+    width: 70%;
+    padding: 10px;
+}
+
+img {  
+    max-width: 75%;  
+    height: auto;
+}
+
+video {
+    max-width: 100%;
+    height: auto;
+}
