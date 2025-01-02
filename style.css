@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200&display=swap');
 
 main {
-    font-family: 'Rubik Vinyl', monospace;
+    font-family: 'JetBrains Mono', monospace;
     max-width: 38rem;
     padding: 2rem;
  /*   margin: auto; */
