@@ -1,3 +1,5 @@
+Posts
+
 This is posts section.
 Here posts are available which will be shown in my website.
 
