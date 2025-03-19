@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://its-acromatic.github.io/sitemap.xml
