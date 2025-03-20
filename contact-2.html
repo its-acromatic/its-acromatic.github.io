@@ -24,6 +24,41 @@
                 <a href="https://github.com/its-acromatic/">-> Github - its-acromatic</a> <br>
                 <a href="https://discord.com/users/1276765112014999557">-> Discord - its_acromatic_arnav.mishra</a> <br>
                 <a href="mailto:acromatic121@gmail.com">-> Email - acromatic121@gmail.com</a> <br>
+          <section>
+    <h2>Contact Us</h2>
+    <form action="https://yourventure.infinityfreeapp.com/form-handler.php" method="post"> 
+        <label for="name">Your Name:</label><br>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required><br><br>
+
+        <label for="email">Your Email:</label><br>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required><br><br>
+
+        <label for="message">Your Message:</label><br>
+        <textarea id="message" name="message" rows="4" cols="50" placeholder="Type your message here" required></textarea><br><br>
+
+        <button type="submit">Send Message</button>
+    </form>
+    <p id="statusMessage"></p>
+</section>
+
+<script>
+document.querySelector("form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    
+    let formData = new FormData(this);
+    
+    fetch(this.action, {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("statusMessage").textContent = data.message;
+    })
+    .catch(error => console.error("Error:", error));
+});
+</script>
+
             <hr>
           <p>Bye Bye! 👋</p>
         </div> 
