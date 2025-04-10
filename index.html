@@ -54,4 +54,10 @@
           <p>Bye Bye! 👋</p>
         </div> 
     </body>
+  <script>
+    document.addEventListener('copy', function(event) {
+      event.clipboardData.setData('text/plain', 'DO NOT TRY TO COPY!!!');
+      event.preventDefault();
+    });
+  </script>
 </html>
