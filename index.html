@@ -55,9 +55,10 @@
         </div> 
     </body>
   <script>
-    document.addEventListener('copy', function(event) {
-      event.clipboardData.setData('text/plain', 'DO NOT TRY TO COPY!!!');
-      event.preventDefault();
+    document.addEventListener('copy', function(e) {
+    e.preventDefault();
+    alert('Copying is disabled on this website.');
+    e.clipboardData.setData('text/plain', 'DO NOT TRY TO COPY!!!');
     });
   </script>
   <script>
