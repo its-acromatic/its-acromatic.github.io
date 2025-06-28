@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Random Floating Bubbles</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #0b0b0b;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 950px;
+      display: flex;
+      background: #121212;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .left, .right {
+      flex: 1 1 400px;
+      min-width: 300px;
+      position: relative;
+    }
+
+    .left {
+      padding: 50px;
+      background: #181818;
+      color: #ffffff;
+      overflow: hidden;
+    }
+
+    .left h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+      z-index: 2;
+      position: relative;
+    }
+
+    .left h3 {
+      font-size: 16px;
+      color: #aaa;
+      margin-bottom: 20px;
+      z-index: 2;
+      position: relative;
+    }
+
+    .left p {
+      font-size: 14px;
+      color: #bbbbbb;
+      z-index: 2;
+      position: relative;
+    }
+
+    .bubble-wrapper {
+  position: absolute;
+  animation: float-anim linear infinite;
+}
+
+
+    .bubble {
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), transparent 60%),
+                  conic-gradient(from 90deg, #4fa3ff, #ff4f81, #4fff9d, #4fa3ff);
+      background-blend-mode: screen;
+      opacity: 0.25;
+      filter: blur(1px) brightness(1.2);
+      box-shadow: inset -4px -4px 12px rgba(255,255,255,0.05),
+                  inset 4px 4px 12px rgba(0,0,0,0.2),
+                  0 0 20px rgba(255, 255, 255, 0.06);
+      z-index: 1;
+      transition: transform 0.15s ease-out;
+      position: absolute;
+    }
+
+    @keyframes float-anim {
+      0% { transform: translate(0px, 0px); }
+      50% { transform: translate(var(--x), var(--y)); }
+      100% { transform: translate(0px, 0px); }
+    }
+
+    .right {
+      padding: 60px 40px;
+      background: linear-gradient(to bottom right, #2a2a2a, #1e1e1e);
+      color: #fff;
+    }
+
+    .right h2 {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .form-group input {
+      padding: 12px;
+      background: #2c2c2c;
+      border: none;
+      border-radius: 6px;
+      color: #fff;
+    }
+
+    .form-group input::placeholder {
+      color: #888;
+    }
+
+    .options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: #aaa;
+      margin: 10px 0 20px 0;
+    }
+
+    .options a {
+      color: #4fa3ff;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 12px;
+      background: #4fa3ff;
+      border: none;
+      color: #fff;
+      border-radius: 6px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      cursor: pointer;
+    }
+
+    .divider {
+      text-align: center;
+      color: #777;
+      margin: 10px 0;
+    }
+
+    .btn-secondary {
+      width: 100%;
+      padding: 12px;
+      background: transparent;
+      border: 2px solid #4fa3ff;
+      color: #4fa3ff;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .signup-text {
+      text-align: center;
+      font-size: 13px;
+      color: #aaa;
+      margin-top: 20px;
+    }
+
+    .signup-text a {
+      color: #4fa3ff;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .wrapper {
+        flex-direction: column;
+        border-radius: 12px;
+      }
+
+      .left, .right {
+        padding: 30px 20px;
+      }
+
+      .left h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="left" id="bubble-area">
+      <h1>WELCOME</h1>
+      <h3>Your Headline Name</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <!-- Bubbles will be injected by JS -->
+    </div>
+
+    <div class="right">
+      <h2>Sign in</h2>
+      <form>
+        <div class="form-group">
+          <input type="text" placeholder="User Name" />
+          <input type="password" placeholder="Password" />
+        </div>
+        <div class="options">
+          <label><input type="checkbox" /> Remember me</label>
+          <a href="#">Forgot Password?</a>
+        </div>
+        <button class="btn-primary" type="submit">Sign in</button>
+        <div class="divider">or</div>
+        <button class="btn-secondary" type="button">Sign in with other</button>
+        <p class="signup-text">Don't have an account? <a href="#">Sign Up</a></p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const area = document.getElementById('bubble-area');
+    const bubbleCount = 8;
+
+    for (let i = 0; i < bubbleCount; i++) {
+  const wrapper = document.createElement('div');
+  wrapper.classList.add('bubble-wrapper');
+
+  const bubble = document.createElement('div');
+  bubble.classList.add('bubble');
+
+  const size = 40 + Math.random() * 40;
+  bubble.style.width = `${size}px`;
+  bubble.style.height = `${size}px`;
+
+  // ✅ Now apply position to wrapper, not bubble
+  wrapper.style.top = `${Math.random() * 85}%`;
+  wrapper.style.left = `${Math.random() * 85}%`;
+
+  // Random animation movement
+  const x = `${Math.random() * 40 - 20}px`;
+  const y = `${Math.random() * 40 - 20}px`;
+  wrapper.style.setProperty('--x', x);
+  wrapper.style.setProperty('--y', y);
+  wrapper.style.animationDuration = `${6 + Math.random() * 6}s`;
+
+  wrapper.appendChild(bubble);
+  area.appendChild(wrapper);
+}
+
+
+    // Repel Effect
+    document.addEventListener('mousemove', (e) => {
+      const bubbles = document.querySelectorAll('.bubble');
+      bubbles.forEach((bubble) => {
+        const rect = bubble.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const dx = e.clientX - centerX;
+        const dy = e.clientY - centerY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const maxDist = 100;
+        const strength = 25;
+
+        if (dist < maxDist) {
+          const offsetX = -(dx / dist) * strength;
+          const offsetY = -(dy / dist) * strength;
+          bubble.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+        } else {
+          bubble.style.transform = `translate(0px, 0px)`;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
