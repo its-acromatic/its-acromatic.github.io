@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Real Bubble Dark Login</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #0b0b0b;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 950px;
+      display: flex;
+      background: #121212;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+      flex-wrap: wrap;
+    }
+
+    .left, .right {
+      flex: 1 1 400px;
+      min-width: 300px;
+    }
+
+    .left {
+      padding: 50px;
+      background: #181818;
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .left h1 {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      z-index: 2;
+      position: relative;
+    }
+
+    .left h3 {
+      font-size: 16px;
+      font-weight: normal;
+      color: #aaa;
+      margin-bottom: 20px;
+      z-index: 2;
+      position: relative;
+    }
+
+    .left p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #bbbbbb;
+      z-index: 2;
+      position: relative;
+    }
+
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), transparent 60%),
+                  conic-gradient(from 90deg, #4fa3ff, #ff4f81, #4fff9d, #4fa3ff);
+      box-shadow: inset -8px -8px 20px rgba(255,255,255,0.05),
+                  inset 8px 8px 20px rgba(0,0,0,0.2),
+                  0 0 40px rgba(255, 255, 255, 0.06);
+      background-blend-mode: screen;
+      opacity: 0.3;
+      filter: blur(1px) brightness(1.2);
+      z-index: 1;
+      animation: float 10s ease-in-out infinite;
+    }
+
+    .bubble1 {
+      width: 140px;
+      height: 140px;
+      bottom: -20px;
+      left: -30px;
+      animation-delay: 0s;
+    }
+
+    .bubble2 {
+      width: 200px;
+      height: 200px;
+      top: 80px;
+      right: -50px;
+      animation-delay: 3s;
+    }
+
+    @keyframes float {
+      0%   { transform: translateY(0px); }
+      50%  { transform: translateY(-25px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .right {
+      padding: 60px 40px;
+      background: linear-gradient(to bottom right, #2a2a2a, #1e1e1e);
+      color: #fff;
+    }
+
+    .right h2 {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .form-group input {
+      padding: 12px;
+      background: #2c2c2c;
+      border: none;
+      border-radius: 6px;
+      color: #fff;
+    }
+
+    .form-group input::placeholder {
+      color: #888;
+    }
+
+    .options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: #aaa;
+      margin: 10px 0 20px 0;
+    }
+
+    .options a {
+      color: #4fa3ff;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 12px;
+      background: #4fa3ff;
+      border: none;
+      color: #fff;
+      border-radius: 6px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      cursor: pointer;
+    }
+
+    .divider {
+      text-align: center;
+      color: #777;
+      margin: 10px 0;
+    }
+
+    .btn-secondary {
+      width: 100%;
+      padding: 12px;
+      background: transparent;
+      border: 2px solid #4fa3ff;
+      color: #4fa3ff;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .signup-text {
+      text-align: center;
+      font-size: 13px;
+      color: #aaa;
+      margin-top: 20px;
+    }
+
+    .signup-text a {
+      color: #4fa3ff;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .wrapper {
+        flex-direction: column;
+        border-radius: 12px;
+      }
+
+      .left, .right {
+        padding: 30px 20px;
+      }
+
+      .left h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="left">
+      <h1>WELCOME</h1>
+      <h3>Your Headline Name</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+      <div class="bubble bubble1"></div>
+      <div class="bubble bubble2"></div>
+    </div>
+    <div class="right">
+      <h2>Sign in</h2>
+      <form>
+        <div class="form-group">
+          <input type="text" placeholder="User Name" />
+          <input type="password" placeholder="Password" />
+        </div>
+        <div class="options">
+          <label><input type="checkbox" /> Remember me</label>
+          <a href="#">Forgot Password?</a>
+        </div>
+        <button class="btn-primary" type="submit">Sign in</button>
+        <div class="divider">or</div>
+        <button class="btn-secondary" type="button">Sign in with other</button>
+        <p class="signup-text">
+          Don't have an account? <a href="#">Sign Up</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
